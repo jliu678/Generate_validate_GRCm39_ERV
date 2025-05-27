@@ -4,10 +4,11 @@ ERV gtf annotation is needed to quantify ERV from sequencing data. But the ERV g
 > 💡 **Tip: [Please find **👉 MY BLOG** for an introduction to the project, along with the detailed instrution and annotation of the scripts in this repository.](https://myhugoblog)**
 
 ## 📑 Table of Contents
-- [📘Introduction & Reasoning](#introduction--reasoning)
-- [💡usage example](#usage-example)
-  - [💻 Snakemake schedules and executes Multiple Jobs on clusters using SLURM](#snakemake-schedules-and-executes-multiple-jobs-on-clusters-using-slurm)
-  - [🧾 Snakemake executing on one job in clusters using SLURM](#snakemake-executing-on-one-job-in-clusters-using-slurm)
+- [📘 Why is ERV gtf compatible with GRCm39 needed (complete version is here)](#-why-is-erv-gtf-compatible-with-grcm39-needed-complete-version-is-here)
+- [💡 How to generate and validate the ERV gtf compatible with GRCm39](#-how-to-generate-and-validate-the-erv-gtf-compatible-with-grcm39)
+  - [💻 Generate GRCm39 ERV](#-generate-grcm39-erv)
+  - [🧾 Vadlidate our GRCm39 ERV](#-vadlidate-our-grcm39-erv)
+- [✅ Conclusion](#-conclusion)
 
 ## 📘Why is ERV gtf compatible with GRCm39 needed (complete version is [here](myhugoblod))
 
@@ -32,15 +33,20 @@ The github repo also contains usage examples as described below.
    - [faidx_split_mus38_file.sh](faidx_split_mus38_file.sh)
    - [run_repeatmasker.sh](run_repeatmasker.sh)
 4. Generate GTF file from `RepeatMasker` outputs
-   - please see `repmask2gtf()`
+   - please see `repmask2gtf()` in [gen_mus_annot.R](gen_mus_annot.R)
 5. Modify GTF for STARsolo
-6. Generate FASTA from GTF for validation
+   - please see `mod_gtf()` in [gen_mus_annot.R](gen_mus_annot.R)
+7. Generate FASTA from GTF for validation
+   - please see `mod_gtf_for_AGAT()` in [gen_mus_annot.R](gen_mus_annot.R)
    - please see [agat_gtf2fa.sh](agat_gtf2fa.sh)
 
 
 ### 🧾 Vadlidate our GRCm39 ERV
 1. Wrange files of GRCm38 ERV
    - [faidx_split_mus38_file.sh](faidx_split_mus38_file.sh)
+   - please see `mod_gtf_for_AGAT()` in [gen_mus_annot.R](gen_mus_annot.R)
+   - please see [agat_gtf2fa.sh](agat_gtf2fa.sh)
+
 3. BLASTn: gEVE as reference, our GRCm39 ERV as query
    - [gen_db.sh](gen_db.sh)
    - parrellel computation
@@ -52,7 +58,7 @@ The github repo also contains usage examples as described below.
 
 
 
-## Conclusion
+## ✅Conclusion
 Our GRCm39 ERV capture nearly all information in gEVE GRCm38 ERV, and add ~4000 more unique ERV sequences. We attribute this improvement to the up-to-date GRCm39 and the sensitivity settings available in the newer version of RepeatMasker. Below observation further revealed that the newly identified sequences in GRCm39 ERV predominantly belong to ERV and LINE, both of significant interest in biomedical research.
 - Out of 9043 total sequences in gEVE, 8768 has a BLASTn \>99% matched sequence in our GRCm39 ERV, corresponding to 4321 unique GRCm39 sequences
-- Only 55% of GRCm39 ERV segments and 27% of GRCm39 LINE segments have matched sequences in gEVE, specifically
+- Only 55% of GRCm39 ERV segments and 27% of GRCm39 LINE segments have matched sequences in gEVE
