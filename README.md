@@ -29,17 +29,27 @@ The github repo also contains usage examples as described below.
 ### 💻 Generate GRCm39 ERV
 1. Install RepeatMasker
 2. File wrangling and run RepeatMasker
-3. Generate GTF file from `RepeatMasker` outputs
+   - [faidx_split_mus38_file.sh](faidx_split_mus38_file.sh)
+   - [run_repeatmasker.sh](run_repeatmasker.sh)
+4. Generate GTF file from `RepeatMasker` outputs
    - please see `repmask2gtf()`
-4. Modify GTF for STARsolo
-5. Generate FASTA from GTF for validation
+5. Modify GTF for STARsolo
+6. Generate FASTA from GTF for validation
+   - please see [agat_gtf2fa.sh](agat_gtf2fa.sh)
 
 
 ### 🧾 Vadlidate our GRCm39 ERV
 1. Wrange files of GRCm38 ERV
-2. BLASTn: gEVE as reference, our GRCm39 ERV as query
+   - [faidx_split_mus38_file.sh](faidx_split_mus38_file.sh)
+3. BLASTn: gEVE as reference, our GRCm39 ERV as query
+   - [gen_db.sh](gen_db.sh)
    - parrellel computation
-3. BLASTn: our GRCm39 ERV as reference, gEVE as query
+   - [compare_fa.R](compare_fa.R)
+4. BLASTn: our GRCm39 ERV as reference, gEVE as query
+   - [gen_db.sh](gen_db.sh)
+   - parrellel computation
+   - [compare_fa_reverse.R](compare_fa_reverse.R)
+
 
 
 ## Conclusion
